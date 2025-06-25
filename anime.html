@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Anime</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                }
+            
+            .bg {
+                background-color: black;
+            }
+            
+            header{
+                width: 100%;
+                position: fixed;
+                color: rgb(255, 255, 255);
+                background-color: rgba(110, 110, 110, 0.8);
+                font-size: 30px;
+                z-index: 1000;
+            }
+
+            header nav {
+                display: flex;
+                gap: 30px;
+                align-items: center;
+                text-decoration: none;
+            }
+
+            header nav a {
+                text-decoration: none;
+            }
+
+            header img {
+                margin: 10px 0px 0px 30px;
+            }
+
+            .slideshow-container {
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            height: 500px; 
+            border-radius: 8px;
+            position: relative;
+            }
+
+            .slide {
+                position: absolute;
+                width: 100%;
+                height: 500px;
+                top: 0;
+                left: 100%;
+                transition: left 1s ease-in-out;
+                opacity: 0;
+                z-index: 1;
+            }
+
+            .slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            border-radius: 8px;
+            }
+
+            .slide.active {
+                left: 0;
+                opacity: 1;
+                z-index: 2;
+            }
+
+            .title-container .title {
+                font-size: 30px;
+                color: white;
+                margin: 55px 80px 10px 80px;
+                text-decoration: none;
+            }
+            
+            .title-container {
+                max-width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .title-container .more {
+                font-size: 30px;
+                color: white;
+                text-decoration: none;
+                margin-right: 70px;
+            }
+
+            .poster img{
+                margin-left: 80px;
+                margin-bottom: 50px;
+            }
+
+        </style>
+    </head>
+    <body class="bg">
+        <header>
+            <nav>
+                <a href="home.html"><img src="image/movie-logo.png" width="150" height="75"></a>
+                <a href="home.html">Home</a> <a href="movie.html">Movie</a> <a href="drama.html">Drama</a> 
+                <a href="anime.html">Anime</a> <a href="top10show.html">Top 10 Show</a>
+            </nav>
+        </header>
+        <div class="slideshow-container">
+            <div class="slides-track">
+                <div class="slide">
+                    <a href="movie.html"><img src="image/movie-slides.webp" alt="movie slide"></a>
+                </div>
+                <div class="slide">
+                    <a href="drama.html"><img src="image/drama-slides.png" alt="drama slides"></a>
+                </div>
+                <div class="slide">
+                    <a href="anime.html"><img src="image/anime-slides.png" alt="anime slides"></a>
+                </div>
+            </div>
+        </div>
+        <nav class="title-container">
+            <a class="title" href="drama.html">Anime</a>
+            <a class="more" href="drama.html">more</a>
+        </nav>
+        <nav class="poster">
+           <a href="https://www.dcc3.com/play/1180/1/904/">
+            <img src="image/海贼王.png" alt="海贼王" width="250" height="400">
+           </a>
+        </nav>        
+    </body>
+</html>
+
+  <script>
+  let slideIndex = 0;
+  const slides = document.getElementsByClassName("slide");
+
+  function showSlides() {
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].classList.remove("active");
+      slides[i].style.left = "100%";
+    }
+
+    slideIndex++;
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+
+    const currentSlide = slides[slideIndex - 1];
+    currentSlide.classList.add("active");
+    currentSlide.style.left = "0";
+
+    setTimeout(showSlides, 3000); // Change every 3 seconds
+  }
+
+  showSlides();
+</script>
